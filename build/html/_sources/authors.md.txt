@@ -1,0 +1,9 @@
+# Authors
+  * Lyuyang Hu - Software architecture design, prototyping, project management, backend development
+  * Mina Bedwany - Front-end, back-end development
+  * 
+  * 
+  * 
+  * 
+# Advisor
+  * Professor Peter Burke

@@ -1,0 +1,295 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Web app &mdash; CloudStation  documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="CloudStation  documentation" href="index.html"/>
+        <link rel="next" title="Deployment" href="deployment.html"/>
+        <link rel="prev" title="CloudStation: A Web-based Ground Control Station" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> CloudStation
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Web app</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#system-architecture">System architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#prerequisite">Prerequisite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#getting-started">Getting started</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#run-server">Run server</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#milestones-backlogs">Milestones &amp; Backlogs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deployment.html">Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deployment.html#ci-cd">CI/CD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deployment.html#troubleshooting">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributors.html">Contributors and contact information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">CloudStation</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Web app</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/webapp.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="web-app">
+<h1>Web app<a class="headerlink" href="#web-app" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://github.com/CloudStationTeam"><img alt="LICENSE" src="https://img.shields.io/badge/license-GPL--3.0-brightgreen" /></a> <a class="reference external" href="https://github.com/CloudStationTeam">GitHub</a></p>
+<div class="section" id="system-architecture">
+<h2>System architecture<a class="headerlink" href="#system-architecture" title="Permalink to this headline">¶</a></h2>
+<p><img alt="CloudStation diagram" src="_images/cloud_station_diagram.png" /><br /><img alt="System architecture diagram" src="_images/system_diagram.png" /></p>
+</div>
+<div class="section" id="prerequisite">
+<h2>Prerequisite<a class="headerlink" href="#prerequisite" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Python</span> <span class="mf">3.6</span><span class="o">+</span>
+<span class="n">Django</span>
+<span class="n">Django</span> <span class="n">Channels</span>
+<span class="n">Django</span> <span class="n">Background</span> <span class="n">Tasks</span>
+<span class="n">Redis</span>
+<span class="n">pyMavlink</span>
+<span class="n">pyserial</span>
+<span class="n">Docker</span>
+</pre></div>
+</div>
+<blockquote>
+<div>Tutorial to setup Python Django development environment: https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/development_environment</div></blockquote>
+</div>
+<div class="section" id="getting-started">
+<h2>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
+<p><strong>These steps can be used to set up a local development environment for this web app. Please follow deployment instructions instead if you want to deploy it on a web server.</strong></p>
+<ol>
+<li><p class="first">Install libraries</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>  
+</pre></div>
+</div>
+</li>
+<li><p class="first">Install and run docker: https://www.docker.com/get-started</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">p</span> <span class="mi">6379</span><span class="p">:</span><span class="mi">6379</span> <span class="o">-</span><span class="n">d</span> <span class="n">redis</span><span class="p">:</span><span class="mf">2.8</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Register for MapBox and generate a public access token https://account.mapbox.com/</p>
+</li>
+<li><p class="first">Add mapbox public access token (public key) to .env of your environment<br />Note: Please do not push your pk to GitHub. In production env, this key should ideally be temporary and change from session to session.</p>
+<ul class="simple">
+<li>ubuntu<br /><code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">MAPBOX_PUBLIC_KEY=pk.xxxxxxxxxxxxxxxxxxxxxxxxxx</span></code></li>
+<li>windows<br /><code class="docutils literal notranslate"><span class="pre">setx</span> <span class="pre">MAPBOX_PUBLIC_KEY</span> <span class="pre">&quot;pk.xxxxxxxxxxxxxxxxxxxxxxxxxxxxx&quot;</span></code> or add an entry in system variables</li>
+</ul>
+</li>
+</ol>
+<div class="section" id="run-server">
+<h3>Run server<a class="headerlink" href="#run-server" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">makemigrations</span>
+<span class="n">python3</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">migrate</span>
+<span class="n">python3</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">runserver</span>
+<span class="n">python3</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">process_tasks</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="milestones-backlogs">
+<h1>Milestones &amp; Backlogs<a class="headerlink" href="#milestones-backlogs" title="Permalink to this headline">¶</a></h1>
+<p>[x] System architecture and prototype (8/31/19)<br />[x] Rewrite mavlink streaming code (9/5/19)<br />[x] Add map to html (10/15/19)<br />[x] Deploy on AWS (10/15/19) We are online!!!<br />[x] Build hardware stack with Omnibus F4 and Raspberry Pi (10/30/19)<br />[x] Two way communication between vehicle and the server (11/5/19)<br />[x] User authentication (11/16/19)<br />[x] Mark drone location on map (11/24)<br />[ ] Migrate to AWS RDS<br />[ ] Communicate with multiple drones at the same time<br />[ ] Distinguish different users. Only send vehicle updates to authorized users<br />[ ] Develop an improved UI for telemetry data<br />[ ] Use a more robust background tasks solution</p>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="deployment.html" class="btn btn-neutral float-right" title="Deployment" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="CloudStation: A Web-based Ground Control Station" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Lyuyang Hu.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> and ❤️  using a custom <a href="https://github.com/LinxiFan/Sphinx-theme">theme</a> based on <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/language_data.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

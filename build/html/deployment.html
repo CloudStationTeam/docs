@@ -1,0 +1,340 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Deployment &mdash; CloudStation  documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="CloudStation  documentation" href="index.html"/>
+        <link rel="next" title="Contributors and contact information" href="contributors.html"/>
+        <link rel="prev" title="Web app" href="webapp.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> CloudStation
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="webapp.html">Web app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="webapp.html#milestones-backlogs">Milestones &amp; Backlogs</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#ci-cd">CI/CD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributors.html">Contributors and contact information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">CloudStation</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Deployment</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/deployment.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="deployment">
+<h1>Deployment<a class="headerlink" href="#deployment" title="Permalink to this headline">¶</a></h1>
+<p>The instructions describe our setup process on an EC2 instance running Ubuntu 18.04 LTS. The steps should be similar if you use a server with Linux Distributions.<br /><a class="reference external" href="https://github.com/CloudStationTeam/cloud_station_web">Source code of the CloudStation web app</a></p>
+<ol>
+<li><p class="first">Launch an EC2 instance on AWS with Ubuntu 18.04 LTS</p>
+<ul class="simple">
+<li>t2.micro (free-tier eligible) is good enough to test the deployment.</li>
+<li>Step 6: Configure Security Group (AWS EC2 Console)<ul>
+<li>SSH (TCP)   Port:22     Source:My IP</li>
+<li>HTTP(TCP)   Port:80     Source:Anywhere</li>
+<li>Custom UDP Rule  Port:14550  Source:Anywhere<ul>
+<li>MAVLink(vehilce messages) is routed to 14550 via UDP in the current configuration. Any available port can be used instead of 14550.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Create or use existing key pairs. This is used for SSH.</li>
+</ul>
+</li>
+<li><p class="first">Associate an Elastic IP to the EC2 (**Please take note of the IP/DNS address, you will need it in step 3 and 6)</p>
+<ul class="simple">
+<li>“An Elastic IP address is a static IPv4 address”. It is a public address we use so the IP address of the deployed
+CloudStation will stay the same.</li>
+</ul>
+<blockquote>
+<div><p>Learn more about it here: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html?icmpid=docs_ec2_console</p>
+</div></blockquote>
+<ul class="simple">
+<li>This is only a temporary solution but it serves our testing purpose well. This step is optional but if elastic IP is not used, the server
+IP address will change from time to time.</li>
+</ul>
+</li>
+<li><p class="first"><a class="reference external" href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html">Connect to Linux instance using an SSH client</a></p>
+</li>
+<li><p class="first">Set up EC2 (run only once)<br />run</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">~</span>
+<span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">CloudStationTeam</span><span class="o">/</span><span class="n">cloud_station_deployment</span><span class="o">.</span><span class="n">git</span>
+<span class="n">bash</span> <span class="o">~/</span><span class="n">cloud_station_deployment</span><span class="o">/</span><span class="n">setup_server</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>The script does the following：</p>
+<ol class="simple">
+<li>Update Ubuntu</li>
+<li>Install NGINX and docker</li>
+<li>Clone cloud_station_web source code</li>
+<li>Set up Python virtual environment (install dependencies)</li>
+</ol>
+</li>
+<li><p class="first">Modify cloud_station_web/webgms/settings.py</p>
+<ul class="simple">
+<li>Add EC2 IP address/DNS to ALLOWED_HOST<ul>
+<li>DNS example: “ec2-xx-xx-xxx-xxx.us-west-1.compute.amazonaws.com” (it should be a string, please do not forget the quotation marks)</li>
+</ul>
+</li>
+<li>Set DEBUG to False</li>
+</ul>
+</li>
+<li><p class="first">Modify cloud_station_deployment/nginx.conf</p>
+<ul class="simple">
+<li>add EC2 IP/DNS address to Line 68: server_name ec2-xx-xx-xxx-xxx.us-west-1.compute.amazonaws.com</li>
+</ul>
+</li>
+<li><p class="first">Configure NGINX, Daphne and Django (run only once)<br />run <code class="docutils literal notranslate"><span class="pre">bash</span> <span class="pre">~/cloud_station_deployment/configure_web_server.sh</span></code><br />The script does the following:</p>
+<ol class="simple">
+<li>Write database migrations</li>
+<li>Collect staticfiles to ~cloud_station_web/static</li>
+<li>Configure NGINX with nginx.conf</li>
+<li>Configure systemctl to automatically run Daphne as a service(daphne.service)</li>
+<li>Download redis and start running redis in a docker container</li>
+</ol>
+</li>
+<li><p class="first">Reload server (after a code update)<br />run <code class="docutils literal notranslate"><span class="pre">bash</span> <span class="pre">~/cloud_station_deployment/reload_server.sh</span></code><br />The script does the following:</p>
+<ol class="simple">
+<li>Pull latest version of the src code</li>
+<li>Write database migrations</li>
+<li>Collect staticfiles</li>
+<li>Reload NGINX and Daphne</li>
+<li>Run django_background_tasks</li>
+</ol>
+</li>
+</ol>
+</div>
+<div class="section" id="ci-cd">
+<h1>CI/CD<a class="headerlink" href="#ci-cd" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="section" id="troubleshooting">
+<h1>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h1>
+<ol>
+<li><p class="first">How do I know my hardware setup is correct (the vehicle is sending mavlink messages to the server)?<br /><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">tcpdump</span> <span class="pre">-n</span> <span class="pre">udp</span> <span class="pre">port</span> <span class="pre">14550</span> <span class="pre">-X</span></code> will print the messages received at port 14550 (UDP).</p>
+</li>
+<li><p class="first">How do I know NGINX and Daphne is running? How do I know if there are erros?</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">service</span> <span class="n">nginx</span> <span class="n">status</span>  
+<span class="n">service</span> <span class="n">daphne</span> <span class="n">status</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">How do I know the status of django_backgroundtasks?<br /><code class="docutils literal notranslate"><span class="pre">service</span> <span class="pre">backgroundtasks</span> <span class="pre">status</span></code></p>
+</li>
+<li><p class="first">The telemetry textbox shows that the websocket connection between server and broswer has been disconnected. What do I do?</p>
+<ul class="simple">
+<li>This usually means Redis fails. Following the Django Channels recommendation, we use Redis as the backing store for the channel layer. We use Docker to run Redis.</li>
+<li>To check status of Docker: <code class="docutils literal notranslate"><span class="pre">service</span> <span class="pre">docker</span> <span class="pre">status</span></code></li>
+<li>To show all Docker containers on the machine: <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">docker</span> <span class="pre">ps</span> <span class="pre">-a</span></code></li>
+<li>To restart Docker and Redis:</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">start</span> <span class="n">docker</span>
+<span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">enable</span> <span class="n">docker</span>
+<span class="n">sudo</span> <span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">p</span> <span class="mi">6379</span><span class="p">:</span><span class="mi">6379</span> <span class="o">-</span><span class="n">d</span> <span class="n">redis</span><span class="p">:</span><span class="mf">2.8</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="contributors.html" class="btn btn-neutral float-right" title="Contributors and contact information" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="webapp.html" class="btn btn-neutral" title="Web app" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Lyuyang Hu.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> and ❤️  using a custom <a href="https://github.com/LinxiFan/Sphinx-theme">theme</a> based on <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/language_data.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

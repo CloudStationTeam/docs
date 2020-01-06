@@ -1,0 +1,193 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>CloudStation: A Web-based Ground Control Station &#8212; CloudStation  documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/sidebar.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="index.html">CloudStation  documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="cloudstation-a-web-based-ground-control-station">
+<h1>CloudStation: A Web-based Ground Control Station<a class="headerlink" href="#cloudstation-a-web-based-ground-control-station" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<p>[![LICENSE](<a class="reference external" href="https://img.shields.io/badge/license-GPL--3.0-brightgreen)](https://github.com/lyuyangh/cloud-station/blob/master/LICENSE">https://img.shields.io/badge/license-GPL–3.0-brightgreen)](https://github.com/lyuyangh/cloud-station/blob/master/LICENSE</a>)
+The goal of this project is to develop a cloud-based ground control station for Ardupilot drones. The web app is designed to be easily scalable so users can control multiple drones at the same time.
+&gt;The project is still under development and we would love to have more developers joining us!</p>
+<p><strong>System architecture</strong>:
+![CloudStation diagram](diagrams/cloud_station_diagram.png “System Architecture”)
+![System architecture diagram](diagrams/system_diagram.png “System Architecture”)</p>
+<p>## Our website
+A deployed [CloudStation](<a class="reference external" href="http://ec2-52-52-195-170.us-west-1.compute.amazonaws.com/">http://ec2-52-52-195-170.us-west-1.compute.amazonaws.com/</a>)
+&gt; [Deployment instructions](<a class="reference external" href="https://github.com/CloudStationTeam/cloud_station_deployment">https://github.com/CloudStationTeam/cloud_station_deployment</a>)</p>
+<p>## Prerequisite
+<code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">Python</span> <span class="pre">3.6+</span>
+<span class="pre">Django</span>
+<span class="pre">Django</span> <span class="pre">Channels</span>
+<span class="pre">Django</span> <span class="pre">Background</span> <span class="pre">Tasks</span>
+<span class="pre">Redis</span>
+<span class="pre">pyMavlink</span>
+<span class="pre">pyserial</span>
+<span class="pre">Docker</span>
+<span class="pre">`</span></code>
+&gt; Tutorial to setup Python Django development environment: <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/development_environment">https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/development_environment</a></p>
+<p>## Getting started
+<strong>These steps can be used to set up a local development environment for this web app. Please follow deployment instructions instead if you want to deploy it on a web server.</strong></p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><dl class="first docutils">
+<dt>Install libraries</dt>
+<dd><code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">pip3</span> <span class="pre">install</span> <span class="pre">-r</span> <span class="pre">requirements.txt</span>
+<span class="pre">`</span></code></dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Install and run docker: <a class="reference external" href="https://www.docker.com/get-started">https://www.docker.com/get-started</a></dt>
+<dd><code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">docker</span> <span class="pre">run</span> <span class="pre">-p</span> <span class="pre">6379:6379</span> <span class="pre">-d</span> <span class="pre">redis:2.8</span>
+<span class="pre">`</span></code></dd>
+</dl>
+</li>
+<li>Register for MapBox and generate a public access token <a class="reference external" href="https://account.mapbox.com/">https://account.mapbox.com/</a></li>
+<li>Add mapbox public access token (public key) to .env of your environment</li>
+</ol>
+<blockquote>
+<div><p>Note: Please do not push your pk to GitHub. In production env, this key should ideally
+be temporary and change from session to session.</p>
+<blockquote>
+<div><ul class="simple">
+<li>ubuntu</li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">`export</span> <span class="pre">MAPBOX_PUBLIC_KEY=pk.xxxxxxxxxxxxxxxxxxxxxxxxxx`</span></code>
+* windows
+<code class="docutils literal notranslate"><span class="pre">`setx</span> <span class="pre">MAPBOX_PUBLIC_KEY</span> <span class="pre">&quot;pk.xxxxxxxxxxxxxxxxxxxxxxxxxxxxx&quot;`</span></code> or add an entry in system variables</p>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+<p>### Run server
+<code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">python3</span> <span class="pre">manage.py</span> <span class="pre">makemigrations</span>
+<span class="pre">python3</span> <span class="pre">manage.py</span> <span class="pre">migrate</span>
+<span class="pre">python3</span> <span class="pre">manage.py</span> <span class="pre">runserver</span>
+<span class="pre">python3</span> <span class="pre">manage.py</span> <span class="pre">process_tasks</span>
+<span class="pre">`</span></code>
+## Architecture
+## Milestones &amp; Backlogs
+- [x] System architecture and prototype (8/31/19)
+- [x] Rewrite mavlink streaming code (9/5/19)
+- [x] Add map to html (10/15/19)
+- [x] Deploy on AWS (10/15/19) We are online!!!
+- [x] Build hardware stack with Omnibus F4 and Raspberry Pi (10/30/19)
+- [x] Two way communication between vehicle and the server (11/5/19)
+- [x] User authentication (11/16/19)
+- [x] Mark drone location on map (11/24)
+- [ ] Migrate to AWS RDS
+- [ ] Communicate with multiple drones at the same time
+- [ ] Distinguish different users. Only send vehicle updates to authorized users.
+- [ ] Develop an improved UI for telemetry data.
+- [ ] Use a more robust background tasks solution.</p>
+<dl class="docutils">
+<dt>## Authors</dt>
+<dd><ul class="first last simple">
+<li>Lyuyang Hu - Software architecture design, prototyping, project management, backend development</li>
+<li>Mina Bedwany - Front-end, back-end development</li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+</ul>
+</dd>
+<dt>## Advisor</dt>
+<dd><ul class="first last simple">
+<li>Professor Peter Burke</li>
+</ul>
+</dd>
+</dl>
+<p>## License
+GNU General Public License v3.0</p>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">CloudStation: A Web-based Ground Control Station</a></li>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+</ul>
+
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/_index.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="index.html">CloudStation  documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020, Lyuyang Hu.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.
+    </div>
+  </body>
+</html>
