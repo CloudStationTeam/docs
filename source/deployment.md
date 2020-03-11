@@ -1,6 +1,7 @@
 # Deployment
 The instructions describe our setup process on an EC2 instance running Ubuntu 18.04 LTS. The steps should be similar if you use a server with Linux Distributions.  
 [Source code of the CloudStation web app](https://github.com/CloudStationTeam/cloud_station_web)
+## Step-by-step deployment guide
 1. Launch an EC2 instance on AWS with Ubuntu 18.04 LTS
     * t2.micro (free-tier eligible) is good enough to test the deployment.
     * Step 6: Configure Security Group (AWS EC2 Console)
@@ -49,11 +50,62 @@ The instructions describe our setup process on an EC2 instance running Ubuntu 18
       2. Write database migrations  
       3. Collect staticfiles  
       4. Reload NGINX and Daphne  
-      5. Run django_background_tasks  
+      5. Run django_background_tasks 
 
-# CI/CD
+**Update web app to the latest version:**  
+```bash ~/cloud_station_deployment/reload_server.sh```
 
-# Troubleshooting 
+## AWS RDS (Aurora engine)
+Note that the project uses SQLite due to its low cost and ease of use with Django. However, AWS RDS can be configured for scalability and robustness. 
+1. Launch an RDS instance on AWS with Aurora with MySQL compatibility
+    * db.r5.large is good enough to test the deployment
+        * Configure Security Group (AWS EC2 Console)
+            * MySQL/Aurora(TCP)   Port:3306     Source:My RDS endpoint
+
+2. Add the RDS_DB_NAME, RDS_USERNAME, RDS_PASSWORD, RDS_HOSTNAME and RDS_PORT to the environment variables
+    * You can do this by editing the ~/.env file and adding the variables in the following format. 
+    ```
+    variable_name=value
+    ``` 
+    * Add this to the ~/.bash_profile file 
+    ```
+    set -a
+    . ~/.env
+    set +a    
+    ```
+    
+    * Make sure to run this command after editing the ~/.bash_profile file. 
+    ```
+    source ~/.bash_profile
+    ```
+
+3. Edit the cloud_station_web/webgms/settings.py file and change the DATABASES field to the following
+    ```
+    import os
+
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': os.environ['RDS_DB_NAME'],
+            'USER': os.environ['RDS_USERNAME'],
+            'PASSWORD': os.environ['RDS_PASSWORD'],
+            'HOST': os.environ['RDS_HOSTNAME'],
+            'PORT': os.environ['RDS_PORT'],
+        }
+    } 
+    ```            
+4. Edit the cloud_station_deployment/backgroundtasks.service and add this line to the [Service] section.
+    ```
+    EnvironmentFile=/home/ubuntu/.env
+    ```
+5. run ```bash ~/cloud_station_deployment/configure_web_server.sh```   
+6. run ```bash ~/cloud_station_deployment/reload_server.sh```
+
+## Authors
+  * Lyuyang Hu
+  * Omkar Pathak
+
+## Troubleshooting 
 1. How do I know my hardware setup is correct (the vehicle is sending mavlink messages to the server)?  
    ```sudo tcpdump -n udp port 14550 -X``` will print the messages received at port 14550 (UDP).
 2. How do I know NGINX and Daphne is running? How do I know if there are erros?

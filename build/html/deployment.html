@@ -35,7 +35,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Contributors and contact information" href="contributors.html" />
+    <link rel="next" title="Contributing to the project" href="contributing.html" />
     <link rel="prev" title="Web app" href="webapp.html" /> 
 </head>
 
@@ -84,9 +84,14 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="webapp.html">Web app</a></li>
 <li class="toctree-l1"><a class="reference internal" href="webapp.html#milestones-backlogs">Milestones &amp; Backlogs</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Deployment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#ci-cd">CI/CD</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Deployment</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#step-by-step-deployment-guide">Step-by-step deployment guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#aws-rds-aurora-engine">AWS RDS (Aurora engine)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#authors">Authors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing to the project</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contributors.html">Contributors and contact information</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
 </ul>
@@ -156,6 +161,8 @@
   <div class="section" id="deployment">
 <h1>Deployment<a class="headerlink" href="#deployment" title="Permalink to this headline">¶</a></h1>
 <p>The instructions describe our setup process on an EC2 instance running Ubuntu 18.04 LTS. The steps should be similar if you use a server with Linux Distributions.<br /><a class="reference external" href="https://github.com/CloudStationTeam/cloud_station_web">Source code of the CloudStation web app</a></p>
+<div class="section" id="step-by-step-deployment-guide">
+<h2>Step-by-step deployment guide<a class="headerlink" href="#step-by-step-deployment-guide" title="Permalink to this headline">¶</a></h2>
 <ol>
 <li><p class="first">Launch an EC2 instance on AWS with Ubuntu 18.04 LTS</p>
 <ul class="simple">
@@ -234,12 +241,81 @@ IP address will change from time to time.</li>
 </ol>
 </li>
 </ol>
+<p><strong>Update web app to the latest version:</strong><br /><code class="docutils literal notranslate"><span class="pre">bash</span> <span class="pre">~/cloud_station_deployment/reload_server.sh</span></code></p>
 </div>
-<div class="section" id="ci-cd">
-<h1>CI/CD<a class="headerlink" href="#ci-cd" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="aws-rds-aurora-engine">
+<h2>AWS RDS (Aurora engine)<a class="headerlink" href="#aws-rds-aurora-engine" title="Permalink to this headline">¶</a></h2>
+<p>Note that the project uses SQLite due to its low cost and ease of use with Django. However, AWS RDS can be configured for scalability and robustness.</p>
+<ol>
+<li><p class="first">Launch an RDS instance on AWS with Aurora with MySQL compatibility</p>
+<ul class="simple">
+<li>db.r5.large is good enough to test the deployment<ul>
+<li>Configure Security Group (AWS EC2 Console)<ul>
+<li>MySQL/Aurora(TCP)   Port:3306     Source:My RDS endpoint</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p class="first">Add the RDS_DB_NAME, RDS_USERNAME, RDS_PASSWORD, RDS_HOSTNAME and RDS_PORT to the environment variables</p>
+<ul class="simple">
+<li>You can do this by editing the ~/.env file and adding the variables in the following format.</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">variable_name</span><span class="o">=</span><span class="n">value</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>Add this to the ~/.bash_profile file</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span> <span class="o">-</span><span class="n">a</span>
+<span class="o">.</span> <span class="o">~/.</span><span class="n">env</span>
+<span class="nb">set</span> <span class="o">+</span><span class="n">a</span>    
+</pre></div>
+</div>
+<ul class="simple">
+<li>Make sure to run this command after editing the ~/.bash_profile file.</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="o">~/.</span><span class="n">bash_profile</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Edit the cloud_station_web/webgms/settings.py file and change the DATABASES field to the following</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">DATABASES</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;ENGINE&#39;</span><span class="p">:</span> <span class="s1">&#39;django.db.backends.mysql&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;NAME&#39;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;RDS_DB_NAME&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;USER&#39;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;RDS_USERNAME&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;PASSWORD&#39;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;RDS_PASSWORD&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;HOST&#39;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;RDS_HOSTNAME&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;PORT&#39;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;RDS_PORT&#39;</span><span class="p">],</span>
+    <span class="p">}</span>
+<span class="p">}</span> 
+</pre></div>
+</div>
+</li>
+<li><p class="first">Edit the cloud_station_deployment/backgroundtasks.service and add this line to the [Service] section.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">EnvironmentFile</span><span class="o">=/</span><span class="n">home</span><span class="o">/</span><span class="n">ubuntu</span><span class="o">/.</span><span class="n">env</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">run <code class="docutils literal notranslate"><span class="pre">bash</span> <span class="pre">~/cloud_station_deployment/configure_web_server.sh</span></code></p>
+</li>
+<li><p class="first">run <code class="docutils literal notranslate"><span class="pre">bash</span> <span class="pre">~/cloud_station_deployment/reload_server.sh</span></code></p>
+</li>
+</ol>
+</div>
+<div class="section" id="authors">
+<h2>Authors<a class="headerlink" href="#authors" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Lyuyang Hu</li>
+<li>Omkar Pathak</li>
+</ul>
 </div>
 <div class="section" id="troubleshooting">
-<h1>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h1>
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h2>
 <ol>
 <li><p class="first">How do I know my hardware setup is correct (the vehicle is sending mavlink messages to the server)?<br /><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">tcpdump</span> <span class="pre">-n</span> <span class="pre">udp</span> <span class="pre">port</span> <span class="pre">14550</span> <span class="pre">-X</span></code> will print the messages received at port 14550 (UDP).</p>
 </li>
@@ -266,6 +342,7 @@ IP address will change from time to time.</li>
 </li>
 </ol>
 </div>
+</div>
 
 
            </div>
@@ -275,7 +352,7 @@ IP address will change from time to time.</li>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="contributors.html" class="btn btn-neutral float-right" title="Contributors and contact information" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="contributing.html" class="btn btn-neutral float-right" title="Contributing to the project" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="webapp.html" class="btn btn-neutral float-left" title="Web app" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

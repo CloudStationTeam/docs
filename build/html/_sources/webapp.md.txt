@@ -50,9 +50,9 @@ python3 manage.py process_tasks
 [x] Build hardware stack with Omnibus F4 and Raspberry Pi (10/30/19)  
 [x] Two way communication between vehicle and the server (11/5/19)  
 [x] User authentication (11/16/19)  
-[x] Mark drone location on map (11/24)  
-[ ] Migrate to AWS RDS  
-[ ] Communicate with multiple drones at the same time  
+[x] Mark drone location on map (11/24/19)  
+[x] Migrate to AWS RDS (2/25/20) 
+[x] Communicate with multiple drones at the same time (1/23/20)  
 [ ] Distinguish different users. Only send vehicle updates to authorized users  
-[ ] Develop an improved UI for telemetry data  
+[ ] Develop an improved UI for telemetry data   
 [ ] Use a more robust background tasks solution  
