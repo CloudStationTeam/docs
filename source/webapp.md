@@ -43,16 +43,28 @@ python3 manage.py runserver
 python3 manage.py process_tasks
 ```
 # Milestones & Backlogs
-[x] System architecture and prototype (8/31/19)  
-[x] Rewrite mavlink streaming code (9/5/19)  
+[x] System architecture and prototype (8/31/19)
+
+[x] Rewrite mavlink streaming code (9/5/19) 
+
 [x] Add map to html (10/15/19)  
+
 [x] Deploy on AWS (10/15/19) We are online!!!  
+
 [x] Build hardware stack with Omnibus F4 and Raspberry Pi (10/30/19)  
-[x] Two way communication between vehicle and the server (11/5/19)  
+
+[x] Two way communication between vehicle and the server (11/5/19) 
+
 [x] User authentication (11/16/19)  
+
 [x] Mark drone location on map (11/24/19)  
+
 [x] Migrate to AWS RDS (2/25/20) 
+
 [x] Communicate with multiple drones at the same time (1/23/20)  
+
 [ ] Distinguish different users. Only send vehicle updates to authorized users  
-[ ] Develop an improved UI for telemetry data   
-[ ] Use a more robust background tasks solution  
+
+[x] Develop an improved UI for telemetry data   
+
+[x] Use a more robust background tasks solution (we don't use `django_background_tasks` any more!)

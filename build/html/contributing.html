@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -29,10 +34,6 @@
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Contributors and contact information" href="contributors.html" />
@@ -50,7 +51,7 @@
           
 
           
-            <a href="index.html" class="icon icon-home"> CloudStation
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> CloudStation
           
 
           
@@ -73,6 +74,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -87,6 +89,7 @@
 <li class="toctree-l1"><a class="reference internal" href="deployment.html">Deployment</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Contributing to the project</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#technologies">Technologies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#notes-things-to-work-on">Notes &amp; Things to work on</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="contributors.html">Contributors and contact information</a></li>
@@ -96,6 +99,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -134,7 +138,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="index.html">Docs</a> &raquo;</li>
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
       <li>Contributing to the project</li>
     
@@ -157,23 +161,54 @@
             
   <div class="section" id="contributing-to-the-project">
 <h1>Contributing to the project<a class="headerlink" href="#contributing-to-the-project" title="Permalink to this headline">¶</a></h1>
-<p>This contributor guide aims to list all the technologies used for this project to help especially student developers getting started quickly. If
-you just want to quickly set up a development environment, please follow the instructions in webapp-&gt;Getting Started.</p>
+<p>This contributor guide aims to list all the technologies used for this project to help student developers get started quickly. If
+you just want to quickly set up a development environment, please follow the instructions in <strong>WebApp-&gt;Getting Started</strong>.</p>
 <div class="section" id="technologies">
 <h2>Technologies<a class="headerlink" href="#technologies" title="Permalink to this headline">¶</a></h2>
 <ol class="simple">
-<li>Hardware<br />The focus of the project isn’t on the hardware. However, CloudStation is built for the hardware so it is important to have a good understanding
-of how it works and where to find answers if you run into issues.<ol>
-<li>Ardupilot (autopilot software) https://ardupilot.org/ardupilot/<ul>
-<li>Mission Planner (You will find it helpful to debug with this GCS that runs on local computer): https://ardupilot.org/planner/index.html</li>
+<li>Hardware:<br />The focus of the project isn’t on the hardware. However, CloudStation is built for the hardware so it is important to have a good understanding of how it works and where to find answers if you run into issues.<ol>
+<li><a class="reference external" href="https://ardupilot.org/ardupilot/">Ardupilot</a> (autopilot software)<ul>
+<li><a class="reference external" href="https://ardupilot.org/planner/index.html">Mission Planner</a><ul>
+<li>You will find it helpful to debug with this GCS that runs on local computer</li>
 </ul>
 </li>
-<li>MAVLink (messaging protocol for communicating with drones) https://mavlink.io/en/</li>
+</ul>
+</li>
+<li><a class="reference external" href="https://mavlink.io/en/">MAVLink</a>: messaging protocol used for drone-to-drone and drone-to-GCS communication<ul>
+<li>documentation for all message types can be found here</li>
+</ul>
+</li>
 </ol>
 </li>
-<li>Web development</li>
-<li>Deployment</li>
-<li>Other</li>
+<li>Web development<ul>
+<li>Front end: html, javascript, bootstrap, <a class="reference external" href="https://www.mapbox.com/">MapBox</a></li>
+<li>Back end: Django<ul>
+<li>SQLite is used in the code for simplicity. Django provides interfaces for various flavors of SQL databases. We also have instructions in <strong>Deployment -&gt; AWS RDS</strong> to help you get started with AWS RDS</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Deployment<br />Please refer to the bash scripts in <a class="reference external" href="https://github.com/CloudStationTeam/cloud_station_deployment">CloudStation Deployment</a>. Some technologies we used are:<ul>
+<li>NGINX, Daphne</li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="section" id="notes-things-to-work-on">
+<h2>Notes &amp; Things to work on<a class="headerlink" href="#notes-things-to-work-on" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><strong>Front End</strong> uses vanilla JS which should be good enough because the map from MapBox takes up most of the space on the page anyways.<ul>
+<li>If I were to start working on this again, I’ll probably clean up the front end code first. It is not structured in a way that can be maintined and improved upon easily. Using some kind of framework (Angular, React, Vue) should help.</li>
+</ul>
+</li>
+<li><strong>Back End</strong><ul>
+<li>The APIs we implemented don’t follow the popular RESTful style. We decided to make them structured in a way that’s very similar to MAVLink commands/messages. It makes initial development a lot easier but I imagine it will make it difficult to add some more advanced features. I think having RESTful APIs actually does make sense for this project. An example of the resources would be a JSON document of all the telemetry information of the vehicle. The backend should send the correct command according to the current speed in that document, etc. This design should make it easier to implement the front end and makes it more structured.</li>
+</ul>
+</li>
+<li><strong>Security</strong><ul>
+<li>This is probably the biggest problem with the current implementation. I don’t have any experience in this field so I can’t provide much information.</li>
+</ul>
+</li>
 </ol>
 </div>
 </div>
@@ -198,11 +233,19 @@ of how it works and where to find answers if you run into issues.<ol>
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2020, Lyuyang Hu
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -213,7 +256,6 @@ of how it works and where to find answers if you run into issues.<ol>
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {
