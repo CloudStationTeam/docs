@@ -2,6 +2,13 @@
 The instructions describe our setup process on an EC2 instance running Ubuntu 18.04 LTS. The steps should be similar if you use a server with Linux Distributions.  
 [Source code of the CloudStation web app](https://github.com/CloudStationTeam/cloud_station_web)
 ## Step-by-step deployment guide
+
+#### Prerequisites
+Before you start, you will need an AWS account (free trial version is OK). The following deployment steps have been developed for a fresh EC2 instance. Although deployment on a local machine is possible, it may require additional steps and configuration changes not covered in the guide.
+
+You will also need a free [MapBox](https://account.mapbox.com/) account. Make sure you can find your Mapbox public token, located on the home page after logging in.
+
+#### Deployment Steps
 1. Launch an EC2 instance on AWS with Ubuntu 18.04 LTS
     * t2.micro (free-tier eligible) is good enough to test the deployment.
     * Step 6: Configure Security Group (AWS EC2 Console)
@@ -33,6 +40,7 @@ The instructions describe our setup process on an EC2 instance running Ubuntu 18
     * Add EC2 IP address/DNS to ALLOWED_HOST 
       * DNS example: "ec2-xx-xx-xxx-xxx.us-west-1.compute.amazonaws.com" (it should be a string, please do not forget the quotation marks)
     * Set DEBUG to False  
+    * Set MAPBOX_PUBLIC_KEY to your Mapbox public token
 6. Modify cloud_station_deployment/nginx.conf
     * add EC2 IP/DNS address to Line 68: server_name ec2-xx-xx-xxx-xxx.us-west-1.compute.amazonaws.com 
 7. Configure NGINX, Daphne and Django (run only once)  
