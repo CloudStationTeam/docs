@@ -15,7 +15,7 @@ You will also need a free [MapBox](https://account.mapbox.com/) account. Make su
       * SSH (TCP)   Port:22     Source:My IP
       * HTTP(TCP)   Port:80     Source:Anywhere
       * Custom UDP Rule  Port:14550  Source:Anywhere
-        * MAVLink(vehilce messages) is routed to 14550 via UDP in the current configuration. Any available port can be used instead of 14550.
+        * MAVLink (vehicle messages) is routed to 14550 via UDP in the current configuration. Any available port can be used instead of 14550. If you want to connect multiple vehicles, enter a range of ports, such as 14550-14560.
     * Create or use existing key pairs. This is used for SSH.
 2. Associate an Elastic IP to the EC2 (**Please take note of the IP/DNS address, you will need it in step 3 and 6) 
     * "An Elastic IP address is a static IPv4 address". It is a public address we use so the IP address of the deployed 
@@ -50,18 +50,18 @@ You will also need a free [MapBox](https://account.mapbox.com/) account. Make su
       2. Collect staticfiles to ~cloud_station_web/static  
       3. Configure NGINX with nginx.conf  
       4. Configure systemctl to automatically run Daphne as a service(daphne.service)  
-      5. Download redis and start running redis in a docker container  
-8. Reload server (after a code update)    
-    run ```bash ~/cloud_station_deployment/reload_server.sh```  
-    The script does the following:  
-      1. Pull latest version of the src code
-      2. Write database migrations  
-      3. Collect staticfiles  
-      4. Reload NGINX and Daphne  
-      5. Run django_background_tasks 
+      5. Download redis and start running redis in a docker container
+8. In your web browser, go to your EC2 instance's DNS address (ec2-xx-xx-xxx-xxx.us-west-1.compute.amazonaws.com) and you should see the CloudStation website. 
 
-**Update web app to the latest version:**  
-```bash ~/cloud_station_deployment/reload_server.sh```
+#### Redeployment
+To reload the server (after a code update)    
+* Run ```bash ~/cloud_station_deployment/reload_server.sh```  
+* The script does the following:  
+    1. Pull latest version of the src code
+    2. Write database migrations  
+    3. Collect staticfiles  
+    4. Reload NGINX and Daphne  
+    5. Run django_background_tasks 
 
 ## AWS RDS (Aurora engine)
 Note that the project uses SQLite due to its low cost and ease of use with Django. However, AWS RDS can be configured for scalability and robustness. 
@@ -116,14 +116,14 @@ Note that the project uses SQLite due to its low cost and ease of use with Djang
 ## Troubleshooting 
 1. How do I know my hardware setup is correct (the vehicle is sending mavlink messages to the server)?  
    ```sudo tcpdump -n udp port 14550 -X``` will print the messages received at port 14550 (UDP).
-2. How do I know NGINX and Daphne is running? How do I know if there are erros?
+2. How do I know NGINX and Daphne is running? How do I know if there are errors?
      ```
      service nginx status  
      service daphne status
      ```
-3. How do I know the status of django_backgroundtasks?  
+3. How do I know the status of django_background_tasks?  
   ```service backgroundtasks status```  
-4. The telemetry textbox shows that the websocket connection between server and broswer has been disconnected. What do I do?  
+4. The telemetry textbox shows that the websocket connection between server and browser has been disconnected. What do I do?  
     * This usually means Redis fails. Following the Django Channels recommendation, we use Redis as the backing store for the channel layer. We use Docker to run Redis.
     * To check status of Docker: ```service docker status```  
     * To show all Docker containers on the machine: ```sudo docker ps -a```  

@@ -21,6 +21,7 @@ Website: `CloudStation
 
    webapp
    deployment
+   howtouse
    contributing
    contributors
    license

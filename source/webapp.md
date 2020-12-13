@@ -1,10 +1,10 @@
-# Web app
+# Overview
 [![LICENSE](https://img.shields.io/badge/license-GPL--3.0-brightgreen)](https://github.com/CloudStationTeam) [GitHub](https://github.com/CloudStationTeam)
 ## System architecture
 ![CloudStation diagram](images/cloud_station_diagram.png "System Architecture")  
 ![System architecture diagram](images/system_diagram.png "System Architecture") 
 
-## Prerequisite 
+## Prerequisites 
 ```
 Python 3.6+
 Django
@@ -18,7 +18,7 @@ Docker
 > Tutorial to setup Python Django development environment: https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/development_environment
 
 ## Getting started
-**These steps can be used to set up a local development environment for this web app. Please follow deployment instructions instead if you want to deploy it on a web server.**
+**These steps can be used to set up a local development environment for this web app. Please follow the [deployment instructions](https://cloud-station-docs.readthedocs.io/en/latest/deployment.html) instead if you want to deploy it on a web server.**
   1. Install libraries    
       ```
       pip3 install -r requirements.txt  
@@ -42,7 +42,7 @@ python3 manage.py migrate
 python3 manage.py runserver
 python3 manage.py process_tasks
 ```
-# Milestones & Backlogs
+## Milestones & Backlogs
 [x] System architecture and prototype (8/31/19)
 
 [x] Rewrite mavlink streaming code (9/5/19) 
