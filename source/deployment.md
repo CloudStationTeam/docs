@@ -63,7 +63,13 @@ To reload the server (after a code update)
     4. Reload NGINX and Daphne  
     5. Run django_background_tasks 
 
-#### AWS RDS (Aurora engine)
+#### Restarting Ubuntu
+If you need to restart Ubuntu, run the following:
+```bash ~/cloud_station_deployment/configure_web_server.sh```
+This procedure is needed to restart redis.
+
+## AWS RDS (Aurora engine)
+>>>>>>> f6ee50a11cd4e504d0594bf8878f2f23a0efa152
 Note that the project uses SQLite due to its low cost and ease of use with Django. However, AWS RDS can be configured for scalability and robustness. 
 1. Launch an RDS instance on AWS with Aurora with MySQL compatibility
     * db.r5.large is good enough to test the deployment
@@ -133,3 +139,6 @@ Note that the project uses SQLite due to its low cost and ease of use with Djang
     sudo systemctl enable docker
     sudo docker run -p 6379:6379 -d redis:2.8
     ```
+5. If you are using a Python version past 3.6, Python does not like "pkg-resources" anymore. Go to the requirements.txt file and comment out the following line:
+'''pkg-resources==0.0.0''' 
+
