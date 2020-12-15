@@ -30,12 +30,14 @@ You will also need a free [MapBox](https://account.mapbox.com/) account. Make su
     cd ~
     git clone https://github.com/CloudStationTeam/cloud_station_deployment.git
     bash ~/cloud_station_deployment/setup_server.sh
-    ```   
-    The script does the following：   
+    ```
+    This deploys an instance of the CloudStation web server based on the latest commit. Note that the latest commit may be developmental. For a more stable version, you can run setup_server.sh with a flag to indicate a certain release tag, e.g. `bash ~/cloud_station_deployment/setup_server.sh --tag=v2.0`.
+    * You can see the list of releases [here](https://github.com/CloudStationTeam/cloud_station_web./releases). The tag for the release is indicated by the text following the tag icon to the left of the release icon, e.g. v2.0 or v1.0.
+    * setup_server.sh does the following：   
       1. Update Ubuntu  
       2. Install NGINX and docker  
       3. Clone cloud_station_web source code  
-      4. Set up Python virtual environment (install dependencies)  
+      4. Set up a Python virtual environment (install dependencies)  
 5. Modify cloud_station_web/webgms/settings.py  
     * Add EC2 IP address/DNS to ALLOWED_HOST 
       * DNS example: "ec2-xx-xx-xxx-xxx.us-west-1.compute.amazonaws.com" (it should be a string, please do not forget the quotation marks)
@@ -61,15 +63,17 @@ To reload the server (after a code update)
     2. Write database migrations  
     3. Collect staticfiles  
     4. Reload NGINX and Daphne  
-    5. Run django_background_tasks 
+    5. Run django_background_tasks
+
+#### Testing Using SITL
+To test CloudStation with a simulated drone instead of a real drone, you can install and run [SITL](https://ardupilot.org/dev/docs/sitl-simulator-software-in-the-loop.html). If you have a Windows computer running Cygwin, you can also use our [SITL deployment script](https://github.com/CloudStationTeam/sitl_deployment) to automate running multiple SITL instances.
 
 #### Restarting Ubuntu
 If you need to restart Ubuntu, run the following:
 ```bash ~/cloud_station_deployment/configure_web_server.sh```
 This procedure is needed to restart redis.
 
-## AWS RDS (Aurora engine)
->>>>>>> f6ee50a11cd4e504d0594bf8878f2f23a0efa152
+## AWS RDS (Aurora engine) - Experimental
 Note that the project uses SQLite due to its low cost and ease of use with Django. However, AWS RDS can be configured for scalability and robustness. 
 1. Launch an RDS instance on AWS with Aurora with MySQL compatibility
     * db.r5.large is good enough to test the deployment
