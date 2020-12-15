@@ -9,6 +9,8 @@ Before you start, you will need an AWS account (free trial version is OK). The f
 You will also need a free [MapBox](https://account.mapbox.com/) account. Make sure you can find your Mapbox public token, located on the home page after logging in.
 
 #### Deployment Steps
+For a step by step video guide, see [here](https://www.youtube.com/watch?v=kNkkfPRBoJo).
+
 1. Launch an EC2 instance on AWS with Ubuntu 18.04 LTS
     * t2.micro (free-tier eligible) is good enough to test the deployment.
     * Step 6: Configure Security Group (AWS EC2 Console)
@@ -32,7 +34,7 @@ You will also need a free [MapBox](https://account.mapbox.com/) account. Make su
     bash ~/cloud_station_deployment/setup_server.sh
     ```
     This deploys an instance of the CloudStation web server based on the latest commit. Note that the latest commit may be developmental. For a more stable version, you can run setup_server.sh with a flag to indicate a certain release tag, e.g. `bash ~/cloud_station_deployment/setup_server.sh --tag=v2.0`.
-    * You can see the list of releases [here](https://github.com/CloudStationTeam/cloud_station_web./releases). The tag for the release is indicated by the text following the tag icon to the left of the release icon, e.g. v2.0 or v1.0.
+    * You can see the list of releases [here](https://github.com/CloudStationTeam/cloud_station_web/releases). The tag for the release is indicated by the text following the tag icon to the left of the release icon, e.g. v2.0 or v1.0.
     * setup_server.sh does the following：   
       1. Update Ubuntu  
       2. Install NGINX and docker  
