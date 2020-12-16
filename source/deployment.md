@@ -56,7 +56,7 @@ For a step by step video guide, see [here](https://www.youtube.com/watch?v=kNkkf
       3. Configure NGINX with nginx.conf  
       4. Configure systemctl to automatically run Daphne as a service(daphne.service)  
       5. Download redis and start running redis in a docker container
-8. In your web browser, go to your EC2 instance's DNS address (ec2-xx-xx-xxx-xxx.us-west-1.compute.amazonaws.com) and you should see the CloudStation website. 
+8. In your web browser, go to your EC2 instance's DNS address (ec2-xx-xx-xxx-xxx.us-west-1.compute.amazonaws.com) and you should see the CloudStation website.
 
 #### Redeployment
 To reload the server (after a code update)    
@@ -75,6 +75,14 @@ To test CloudStation with a simulated drone instead of a real drone, you can ins
 If you need to restart Ubuntu, run the following:
 ```bash ~/cloud_station_deployment/configure_web_server.sh```
 This procedure is needed to restart redis.
+
+## Configuring a Drone for CloudStation
+In order for the drone to connect to CloudStation, the drone needs to be set up to send Mavlink packets over UDP to the CloudStatoin IP address. The UDP port is also the "ID" of the drone in the CloudStation UI. As far as Cloudstation is concerned, it does not matter how the drone is configured to send/receive Mavlink traffic over UDP.
+
+There are many ways to configure the drone to do this. The easiest is to have a on-board ["companion computer"](https://ardupilot.org/dev/docs/companion-computers.html). For example, the companion computer, e.g., can connect to the flight controller over UART. The companion computer can run Mavproxy, and the Mavproxy configuration file can be set to point send Mavlink packets over UDP to the IP address of the CloudStation. You will need to make sure firewalls are appropriately configure. A detailed example of how to do this over 4G network is also at [4guav](https://gitlab.com/pjbca/4guav) and in ref:
+
+[J70] Peter J. Burke “A Safe, Open Source, 4G Connected Self-Flying Plane With 1 Hour Flight Time and All Up Weight (AUW) <300 g: Towards a New Class of Internet Enabled UAVs”
+IEEE Access, 7(1), 67833 – 67855 (2019).
 
 ## AWS RDS (Aurora engine) - Experimental
 Note that the project uses SQLite due to its low cost and ease of use with Django. However, AWS RDS can be configured for scalability and robustness. 
