@@ -1,5 +1,5 @@
 # How to Use
-For a video guide on how to use CloudStation, see [here](https://www.youtube.com/watch?v=iJFNsIbRLDE).
+For a video guide on how to use CloudStation, go [here](https://youtu.be/PB6MMZeGsj8).
 
 ![CloudStation before logging in](images/cloudstation-first-access.png "CloudStation site screenshot when first accessed") 
 1. In your web browser, go to your AWS instance's DNS address. You will see a map that takes up the whole screen. In the menu at the top, click "Log in/Sign up" and select "Sign up."
