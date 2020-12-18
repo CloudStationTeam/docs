@@ -4,6 +4,11 @@
 ![CloudStation diagram](images/cloud_station_diagram.png "System Architecture")  
 ![System architecture diagram](images/system_diagram.png "System Architecture") 
 
+## Links
+[[J78] Lyuyang Hu ; Omkar Pathak ; Zeyu He ; Hunkyu Lee ; Mina Bedwany ; Jace Mica ; Peter J. Burke “CloudStation”: A Cloud-based Ground Control Station for Drones ” IEEE Journal on Miniaturization for Air and Space Systems (2020)](http://www.burkelab.com/wp-content/uploads/%E2%80%9CCloudStation%E2%80%9D-A-Cloud-based-Ground-Control-Station-for-Drones.pdf)
+
+[CloudStation - UCI MCS/MSWE Capstone Presentation '20](https://youtu.be/aJPaCRSWjKY)
+
 ## Milestones & Backlogs
 [x] System architecture and prototype (8/31/19)
 
