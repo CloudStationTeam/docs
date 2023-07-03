@@ -3,8 +3,8 @@ For SITL deployment, you may want to start another Windows ec2 and connect to it
 ```
 curl https://raw.githubusercontent.com/ArduPilot/ardupilot/blob/master/Tools/environment_install/install-prereqs-windows.ps1
 ```
-3. open cygwin.exe on desktop.
-4. download ardupilot.
+2. open cygwin.exe on desktop.
+3. download ardupilot.
 ```
 git clone https://github.com/ArduPilot/ardupilot
 cd ./ardupilot
