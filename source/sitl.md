@@ -16,6 +16,6 @@ cd ..
 curl https://raw.githubusercontent.com/CloudStationTeam/sitl_deployment/main/start_sitl_fleet.sh
 bash start_sitl_fleet.sh (add options)
 ```
-start with 1 first.
+start with 1 first. \
 Then connect to it (14550+) on cloud station.
 
