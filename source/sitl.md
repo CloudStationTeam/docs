@@ -3,7 +3,7 @@ For SITL deployment, you may want to start another Windows ec2 and connect to it
 1. download https://github.com/ArduPilot/ardupilot/blob/master/Tools/environment_install/install-prereqs-windows.ps1, then right click to run it by ps (to download cygwin and mavproxy).
    
     ```
-    curl https://raw.githubusercontent.com/ArduPilot/ardupilot/blob/master/Tools/environment_install/install-prereqs-windows.ps1
+    curl https://raw.githubusercontent.com/ArduPilot/ardupilot/master/Tools/environment_install/install-prereqs-windows.ps1
     ```
 2. open cygwin.exe on desktop.
 3. download ardupilot (and update pymavlink).
