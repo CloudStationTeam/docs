@@ -7,7 +7,7 @@ curl https://raw.githubusercontent.com/ArduPilot/ardupilot/blob/master/Tools/env
 2. open cygwin.exe on desktop.
 3. download ardupilot (and update pymavlink).
 ```
-git clone https://github.com/ArduPilot/ardupilot
+git clone https://github.com/ArduPilot/ardupilot.git
 cd ./ardupilot
 git submodule update --init --recursive
 ```
