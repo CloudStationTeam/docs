@@ -21,6 +21,7 @@ Website: `CloudStation
 
    webapp
    deployment
+   sitl
    howtouse
    contributing
    contributors
