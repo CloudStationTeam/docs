@@ -4,20 +4,18 @@ For SITL deployment, you may want to start another Windows ec2 and connect to it
 curl https://raw.githubusercontent.com/ArduPilot/ardupilot/blob/master/Tools/environment_install/install-prereqs-windows.ps1
 ```
 2. open cygwin.exe on desktop.
-3. download ardupilot.
+3. download ardupilot (and update pymavlink).
 ```
 git clone https://github.com/ArduPilot/ardupilot
 cd ./ardupilot
 git submodule update --init --recursive
 ```
-(to update pymavlink).
-4. download https://github.com/CloudStationTeam/sitl_deployment/blob/main/start_sitl_fleet.sh and run it.
+4. download https://github.com/CloudStationTeam/sitl_deployment/blob/main/start_sitl_fleet.sh and run it (with options).
 ```
 cd ..
 curl https://raw.githubusercontent.com/CloudStationTeam/sitl_deployment/main/start_sitl_fleet.sh
 bash start_sitl_fleet.sh
 ```
-(add options.)
 start with 1 first.
 Then connect to it (14550+) on cloud station.
 
