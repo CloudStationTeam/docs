@@ -7,13 +7,15 @@ For SITL deployment, you may want to start another Windows ec2 and connect to it
 git clone https://github.com/ArduPilot/ardupilot
 cd ./ardupilot
 git submodule update --init --recursive
-``` (to update pymavlink).
+```
+(to update pymavlink).
 5. download https://github.com/CloudStationTeam/sitl_deployment/blob/main/start_sitl_fleet.sh and run it.
 ```
 cd ..
 curl https://raw.githubusercontent.com/CloudStationTeam/sitl_deployment/main/start_sitl_fleet.sh
 bash start_sitl_fleet.sh
-``` (add options.)
+```
+(add options.)
 start with 1 first.
 Then connect to it (14550+) on cloud station.
 
