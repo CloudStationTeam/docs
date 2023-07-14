@@ -29,7 +29,7 @@ Tips:
 
 For custom-location, you could use `-L` or `-l`.
 
-For lidar sim, you could do `-A --uartF`, or example ```./ardupilot/Tools/autotest/sim_vehicle.py -A --uartF=sim:sf45b```. Then in mavproxy, do
+For lidar sim, you could do `-A --uartF`, for example ```./ardupilot/Tools/autotest/sim_vehicle.py -A --uartF=sim:sf45b```. Then in mavproxy, do
 ```
 param set SERIAL5_PROTOCOL 11
 script /tmp/post-locations.scr
