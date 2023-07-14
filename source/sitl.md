@@ -21,7 +21,7 @@ For SITL deployment, you may want to start another Windows ec2 and connect to it
     bash start_sitl_fleet.sh (add options)
     ```
 start with 1 first. \
-Then connect to it (14550+) on Cloud Station.
+Then connect to it (14550+) on Cloud Station. \
 
 
 
