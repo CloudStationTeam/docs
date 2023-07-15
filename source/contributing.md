@@ -28,7 +28,7 @@ you just want to quickly set up a development environment, please follow the ins
     * This is probably the biggest problem of the current implementation. I don't have any experience in this field so I can't provide much information.
     * Currently, CloudStation cannot be used safely for multiple users. User accounts do not actually link drones to their respective accounts, and there are no safeguards in place to prevent one user from entering the drone ID of a different user. Editing the additional telemetry data displayed in "Other Data" will also affect settings for all users.
 4. **Debug**
-    * To reload the server, you could do `bash reload_server.sh`. However, if you updated requirements.txt, you have to do `re -r ENV` and deploy everything again.
+    * To reload the server, you could do `bash reload_server.sh`. However, if you updated requirements.txt, you have to do `rm -r ENV` and deploy everything again.
     * You could use print statements or Python logging, however, it's recommended to use Python logging because it's a good practice. You could configure the logs in settings.py. The logs are not displayed by Django even if you run it in front-end, it's configured by daphne.service. So after you reload the server, you could do `journalctl -u daphne.service | tail` for print statements. You may output it to a log file or use Splunk for it to be more convenient.
     
 ## Feature Improvements
