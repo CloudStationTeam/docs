@@ -12,6 +12,7 @@ For SITL deployment, you may want to start another Windows ec2 and connect to it
     ```
     git clone https://github.com/ArduPilot/ardupilot.git
     cd ./ardupilot
+    pip3 install pexpect 
     git submodule update --init --recursive
     ```
 4. download https://github.com/CloudStationTeam/sitl_deployment/blob/main/start_sitl_fleet.sh and run it.
@@ -24,7 +25,7 @@ For SITL deployment, you may want to start another Windows ec2 and connect to it
 start with 1 first. \
 Then connect to it (14550+) on Cloud Station. \
 
-
+5. If it didn't work, try.
 
 Tips:
 
