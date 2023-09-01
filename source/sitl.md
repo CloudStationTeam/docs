@@ -27,7 +27,7 @@ Then connect to it (14550+) on Cloud Station. \
 
 5. If it didn't work, try
     ```
-    ./ardupilot/Tools/autotest/sim_vehicle.py -v ArduCopter --no-extra-ports -I 1 --out=udp:<CloudStationIP:14550>
+    ./ardupilot/Tools/autotest/sim_vehicle.py -v ArduCopter --no-extra-ports -I 1 --out=udp:<CloudStationIP>:14550
     ```
     and use pip3 to install packages. \
    If it didn't work either, try
