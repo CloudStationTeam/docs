@@ -25,8 +25,21 @@ For SITL deployment, you may want to start another Windows ec2 and connect to it
 start with 1 first. \
 Then connect to it (14550+) on Cloud Station. \
 
-5. If it didn't work, try.
+5. If it didn't work, try
+    ```
+    ./ardupilot/Tools/autotest/sim_vehicle.py
+    ```
+    and use pip3 to install packages.
+   If it didn't work either, try
+    ```
+    curl -O -L https://raw.githubusercontent.com/ArduPilot/ardupilot/master/Tools/environment_install/install-prereqs-windows.ps1
+    ls
+    /cygdrive/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe ./install-prereqs-windows.ps1
+    ```
+    to run the .ps1 by cygwin to reinstall mavproxy.
 
+   
+    
 Tips:
 
 For custom-location, you could use `-L` or `-l`.
