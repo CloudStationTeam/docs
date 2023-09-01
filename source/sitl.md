@@ -29,7 +29,7 @@ Then connect to it (14550+) on Cloud Station. \
     ```
     ./ardupilot/Tools/autotest/sim_vehicle.py
     ```
-    and use pip3 to install packages.
+    and use pip3 to install packages. \
    If it didn't work either, try
     ```
     curl -O -L https://raw.githubusercontent.com/ArduPilot/ardupilot/master/Tools/environment_install/install-prereqs-windows.ps1
