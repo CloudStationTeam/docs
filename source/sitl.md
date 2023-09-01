@@ -22,10 +22,16 @@ For SITL deployment, you may want to start another Windows ec2 and connect to it
     curl -O -L https://raw.githubusercontent.com/CloudStationTeam/sitl_deployment/main/start_sitl_fleet.sh
     bash start_sitl_fleet.sh (add options)
     ```
+    For example,
+    ```
+    bash start_sitl_fleet.sh --loc=ardupilot --ip=<CloudStationIP> --udp=14550 --custom-location=<lon,alt,lat> or <SomeLoc>
+    ```
+    .
+   
 start with 1 first. \
 Then connect to it (14550+) on Cloud Station. \
 
-5. If it didn't work, try
+6. If it didn't work, try
     ```
     ./ardupilot/Tools/autotest/sim_vehicle.py -v ArduCopter --no-extra-ports -I 1 --out=udp:<CloudStationIP>:14550
     ```
