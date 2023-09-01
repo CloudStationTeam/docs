@@ -24,7 +24,7 @@ For SITL deployment, you may want to start another Windows ec2 and connect to it
     ```
     For example,
     ```
-    bash start_sitl_fleet.sh --loc=ardupilot --ip=<CloudStationIP> --udp=14550 --custom-location=<lon,alt,lat> or <SomeLoc>
+    bash start_sitl_fleet.sh --loc=ardupilot --ip=<CloudStationIP> --udp=14550 (--custom-location=<lon,alt,lat> or <SomeLoc>)
     ```
     .
    
