@@ -36,7 +36,7 @@ Then connect to it (14550+) on Cloud Station. \
     ls
     /cygdrive/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe ./install-prereqs-windows.ps1
     ```
-    to run the .ps1 by cygwin to reinstall mavproxy.
+    to run the .ps1 file by cygwin to reinstall mavproxy.
 
    
     
