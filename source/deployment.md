@@ -46,9 +46,14 @@ For a step by step video guide, see [here](https://www.youtube.com/watch?v=kNkkf
       * DNS example: "ec2-xx-xx-xxx-xxx.us-west-1.compute.amazonaws.com" (it should be a string, please do not forget the quotation marks)
     * Set DEBUG to False  
     * Set MAPBOX_PUBLIC_KEY to your Mapbox public token
-6. Modify cloud_station_deployment/nginx.conf
+
+6. Add your Google Map API Public Key to cloud_station_web/.env. \
+Note: no space and no quotes. e.g. GOOGLE_MAP_API_KEY=something. \
+(You have some free credits for free tier by Google Cloud and it does not cost money under $200 free API limit (which is about several dollars per 1k reqs), and you could opt to Not cost money if it does not exceed the free API limit.)
+
+7. Modify cloud_station_deployment/nginx.conf
     * add EC2 IP/DNS address to Line 68: server_name ec2-xx-xx-xxx-xxx.us-west-1.compute.amazonaws.com 
-7. Configure NGINX, Daphne and Django (run only once)  
+8. Configure NGINX, Daphne and Django (run only once)  
     run ```bash ~/cloud_station_deployment/configure_web_server.sh```      
     The script does the following:     
       1. Write database migrations  
@@ -56,7 +61,8 @@ For a step by step video guide, see [here](https://www.youtube.com/watch?v=kNkkf
       3. Configure NGINX with nginx.conf  
       4. Configure systemctl to automatically run Daphne as a service(daphne.service)  
       5. Download redis and start running redis in a docker container
-8. In your web browser, go to your EC2 instance's DNS address (ec2-xx-xx-xxx-xxx.us-west-1.compute.amazonaws.com) and you should see the CloudStation website.
+9. In your web browser, go to your EC2 instance's DNS address (ec2-xx-xx-xxx-xxx.us-west-1.compute.amazonaws.com) and you should see the CloudStation website.
+
 
 
 #### Notes
