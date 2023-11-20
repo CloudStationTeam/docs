@@ -95,6 +95,11 @@ To reload the server (after a code update)
     4. Reload NGINX and Daphne  
     5. Run django_background_tasks
 
+
+
+
+Note that If frontend didn't work, clear browser cache.
+
 #### Testing Using SITL
 To test CloudStation with a simulated drone instead of a real drone, you can install and run [SITL](https://ardupilot.org/dev/docs/sitl-simulator-software-in-the-loop.html). If you have a Windows computer running Cygwin, you can also use our [SITL deployment script](https://github.com/CloudStationTeam/sitl_deployment) to automate running multiple SITL instances.
 
