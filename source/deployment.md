@@ -71,6 +71,8 @@ Note: no space and no quotes. e.g. GOOGLE_MAP_API_KEY=something. \
 3. Public keys are in .env not settings.py. \
 Because it's easier to manage if you have other APIs, and it's safer because 1. .env is added in .gitignore and 2. we don't use the APIs in frontend because it's not a secure practice. we used the Mapbox API in frontend because it does not cost money so it doesn't matter.
 
+4. Note that you have to modify setup_server.sh (and without the tag) if your repo is a different one.
+   
 
 
 #### Redeployment
