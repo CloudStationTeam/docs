@@ -59,3 +59,9 @@ script /tmp/post-locations.scr
 3. For battery param, you could do ```param set SIM_BATTERY 100``` in mavproxy.
 
 
+4. Note: if your RDP didn't work, you could try to reboot it on Amazon AWS and wait for several mins instead of another RDP, because that may take much more time.
+
+5. Note: If you restarted SITL and it didn't show on the map, then restart cygwin. Then restart SITL and wait for the params to load. \
+Similarly, if reload CloudStation took a while, exit the shell and restart it again.
+
+
