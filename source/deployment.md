@@ -54,14 +54,20 @@ Note: no space and no quotes. e.g. GOOGLE_MAP_API_KEY=something. \
 7. Modify cloud_station_deployment/nginx.conf
     * add EC2 IP/DNS address to Line 68: server_name ec2-xx-xx-xxx-xxx.us-west-1.compute.amazonaws.com 
 8. Configure NGINX, Daphne and Django (run only once)  
-    run ```bash ~/cloud_station_deployment/configure_web_server.sh```      
+    ```
+    sudo usermod -a -G ubuntu www-data #add nginx user to the ubuntu group
+    # optional
+    sudo chgrp -R ubuntu * #change file owners to ubuntu group
+    sudo chmod -R g+r * #change file permissions of file owners 
+    ```
+    Then run ```bash ~/cloud_station_deployment/configure_web_server.sh```      
     The script does the following:     
       1. Write database migrations  
       2. Collect staticfiles to ~cloud_station_web/static  
       3. Configure NGINX with nginx.conf  
       4. Configure systemctl to automatically run Daphne as a service(daphne.service)  
       5. Download redis and start running redis in a docker container
-9. In your web browser, go to your EC2 instance's DNS address (ec2-xx-xx-xxx-xxx.us-west-1.compute.amazonaws.com) and you should see the CloudStation website.
+10. In your web browser, go to your EC2 instance's DNS address (ec2-xx-xx-xxx-xxx.us-west-1.compute.amazonaws.com) and you should see the CloudStation website.
 
 
 
