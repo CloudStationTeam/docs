@@ -67,7 +67,9 @@ Note: no space and no quotes. e.g. GOOGLE_MAP_API_KEY=something. \
       3. Configure NGINX with nginx.conf  
       4. Configure systemctl to automatically run Daphne as a service(daphne.service)  
       5. Download redis and start running redis in a docker container
-10. In your web browser, go to your EC2 instance's DNS address (ec2-xx-xx-xxx-xxx.us-west-1.compute.amazonaws.com) and you should see the CloudStation website.
+10. In your web browser, go to your EC2 instance's DNS address (ec2-xx-xx-xxx-xxx.us-west-1.compute.amazonaws.com) and you should see the CloudStation website. \
+Note that if it didn't work, reload the server by reload_server.sh.
+
 
 
 
