@@ -79,7 +79,7 @@ Note that if it didn't work, reload the server by reload_server.sh.
 3. Public keys are in .env not settings.py. \
 Because it's easier to manage if you have other APIs, and it's safer because 1. .env is added in .gitignore and 2. we don't use the APIs in frontend because it's not a secure practice. we used the Mapbox API in frontend because it does not cost money so it doesn't matter.
 
-4. Note that you have to modify setup_server.sh (and without the tag) if your repo is a different one.
+4. Note that you have to modify setup_server.sh (and without the tag) and reload_server.sh if your cloud_station_web repo is a different one.
    
 5. Note that if at some point you did something wrong / you edited requirements.txt, remove all the files and restart the process. \
 Refer to cloud_station_deployment/rmv_env.sh and edit the files.
