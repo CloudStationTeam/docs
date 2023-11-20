@@ -58,6 +58,12 @@ For a step by step video guide, see [here](https://www.youtube.com/watch?v=kNkkf
       5. Download redis and start running redis in a docker container
 8. In your web browser, go to your EC2 instance's DNS address (ec2-xx-xx-xxx-xxx.us-west-1.compute.amazonaws.com) and you should see the CloudStation website.
 
+
+#### Notes
+1. Note: if the CloudStation website link didn't work on Amazon, don't click on it on Amazon but copy and paste it in a new website.
+
+
+
 #### Redeployment
 To reload the server (after a code update)    
 * Run ```bash ~/cloud_station_deployment/reload_server.sh```  
