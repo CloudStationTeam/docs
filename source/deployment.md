@@ -73,6 +73,8 @@ Because it's easier to manage if you have other APIs, and it's safer because 1. 
 
 4. Note that you have to modify setup_server.sh (and without the tag) if your repo is a different one.
    
+5. Note that if at some point you did something wrong, remove all the files and restart the process. \
+Refer to cloud_station_deployment/rmv_env.sh and edit the files.
 
 
 #### Redeployment
