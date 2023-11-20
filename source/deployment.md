@@ -68,6 +68,8 @@ Note: no space and no quotes. e.g. GOOGLE_MAP_API_KEY=something. \
 #### Notes
 1. Note: if the CloudStation website link didn't work on Amazon, don't click on it on Amazon but copy and paste it in a new website.
 2. Note: public keys for cloud_station_web/.env are all uppercase letters. If you use a lower case (for example, SMT_smt), it won't work. It may work in fg (JS) but not bg (Python).
+3. Public keys are in .env not settings.py. \
+Because it's easier to manage if you have other APIs, and it's safer because 1. .env is added in .gitignore and 2. we don't use the APIs in frontend because it's not a secure practice. we used the Mapbox API in frontend because it does not cost money so it doesn't matter.
 
 
 
