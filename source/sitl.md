@@ -43,8 +43,7 @@ For SITL deployment ([An Intro Video](https://youtu.be/KfAOsSYtokA)), you may wa
     ```
     to run the .ps1 file by cygwin to reinstall mavproxy. Then retry step 4.
 
-   
-    
+\
 Tips:
 
 1. For custom-location, you could use `-L` or `-l`.
@@ -63,5 +62,6 @@ script /tmp/post-locations.scr
 
 5. Note: If you restarted SITL and it didn't show on the map, then restart cygwin. Then restart SITL and wait for the params to load. \
 Similarly, if reload CloudStation took a while, exit the shell and restart it again.
+
 
 
