@@ -67,6 +67,7 @@ Note: no space and no quotes. e.g. GOOGLE_MAP_API_KEY=something. \
 
 #### Notes
 1. Note: if the CloudStation website link didn't work on Amazon, don't click on it on Amazon but copy and paste it in a new website.
+2. Note: public keys for cloud_station_web/.env are all uppercase letters. If you use a lower case (for example, SMT_smt), it won't work. It may work in fg (JS) but not bg (Python).
 
 
 
