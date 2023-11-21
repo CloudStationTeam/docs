@@ -9,7 +9,7 @@ It may take a few minutes for changes to show up, and you may have to force refr
 
 
 
-Notes 
+Notes: 
 1. .readthedocs.yaml is in the base dir. Refer to https://docs.readthedocs.io/en/stable/config-file/v2.html.
 2. If your code edits does not show, check the "Builds" section on the Doc website dashboard for error prints.
 
