@@ -1,5 +1,5 @@
 # CloudStation Deployment
-The instructions describe our setup process on an EC2 instance running Ubuntu 22.4 LTS. The steps should be similar if you use a server with Linux Distributions.
+The instructions describe our setup process on an EC2 instance running Ubuntu 22.4 LTS ????. The steps should be similar if you use a server with Linux Distributions.
 
 [CloudStation source code](https://github.com/CloudStationTeam/cloud_station_web)
 ## Step-by-step deployment guide
