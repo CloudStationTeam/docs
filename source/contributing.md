@@ -30,6 +30,10 @@ you just want to quickly set up a development environment, please follow the ins
 4. **Debug**
     * To reload the server, you could do `bash reload_server.sh`. However, if you updated requirements.txt, you have to do `rm -r ENV` and deploy everything again.
     * You could use print statements or Python logging, however, it's recommended to use Python logging because it's a good practice. You could configure the logs in settings.py. The logs are not displayed by Django even if you run it in front-end, it's configured by daphne.service. So after you reload the server, you could do `journalctl -u daphne.service | tail` for print statements. You may output it to a log file or use Splunk for it to be more convenient.
+    * Debugger Tools:
+      FG: browser debugger tools, log msgs;
+      BG: print logs, website log msgs, SITL console, etc.
+
     
 ## Feature Improvements
 1. Enhancing multi-user support and security (see General Notes - Security)
