@@ -33,6 +33,12 @@ you just want to quickly set up a development environment, please follow the ins
     * Debugger Tools: \
       FG: browser debugger tools, log msgs; \
       BG: print logs (shown above), website log msgs, SITL console, etc.
+    * To clear logs, do:
+      ```
+      sudo systemctl stop daphne.service # Stop the Service 
+      sudo journalctl --vacuum-time=1s # Clear Logs 
+      sudo systemctl start daphne.service # Start the Service 
+      ```
 
     
 ## Feature Improvements
