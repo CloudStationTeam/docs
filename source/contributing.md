@@ -29,7 +29,7 @@ you just want to quickly set up a development environment, please follow the ins
     * Currently, CloudStation cannot be used safely for multiple users. User accounts do not actually link drones to their respective accounts, and there are no safeguards in place to prevent one user from entering the drone ID of a different user. Editing the additional telemetry data displayed in "Other Data" will also affect settings for all users.
     * You could check who accessed the website by \
       `awk '{print $1, $4, $5}' /var/log/nginx/access.log` \
-      and
+      and \
       `less /var/log/nginx/access.log` \
       There maybe many hackers (which is common).
 
