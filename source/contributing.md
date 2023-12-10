@@ -44,7 +44,7 @@ you just want to quickly set up a development environment, please follow the ins
       sudo systemctl stop daphne.service # Stop the Service 
       sudo journalctl --vacuum-time=1s # Clear Logs 
       sudo systemctl start daphne.service # ReStart the Service 
-      ```.
+      ```
 
 
 
