@@ -24,13 +24,18 @@ For SITL deployment ([An Intro Video](https://youtu.be/KfAOsSYtokA)), you may wa
     ```
     For example,
     ```
-    bash start_sitl_fleet.sh --loc=ardupilot --ip=<CloudStationIP> --udp=14550 (--custom-location=<lon,alt,lat> or <SomeLoc>)
+    bash start_sitl_fleet.sh --loc=ardupilot --ip=<CloudStationIP> --udp=14550 (--custom-location=<Lat,Lng,Alt,Heading> or <SomeLoc>)
+    ```
+    and
+    For example,
+    ```
+    bash start_sitl_fleet.sh --loc=ardupilot --ip=<CloudStationIP> --udp=14550 --custom-location=<Lat_of_UC_Irvine>,<Lng_of_UC_Irvine>,500,1
     ```
     .
     start with 1 first.
     Then connect to it (14550+) on Cloud Station.
 
-5. If it didn't work, try
+6. If it didn't work, try
     ```
     ./ardupilot/Tools/autotest/sim_vehicle.py -v ArduCopter --no-extra-ports -I 1 --out=udp:<CloudStationIP>:14550
     ```
@@ -62,6 +67,10 @@ script /tmp/post-locations.scr
 
 5. Note: If you restarted SITL and it didn't show on the map, then restart cygwin. Then restart SITL and wait for the params to load. \
 Similarly, if reload CloudStation took a while, exit the shell and restart it again.
+
+
+
+Ref: https://ardupilot.org/dev/docs/using-sitl-for-ardupilot-testing.html
 
 
 
