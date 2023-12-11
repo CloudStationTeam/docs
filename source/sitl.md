@@ -70,7 +70,12 @@ Similarly, if reload CloudStation took a while, exit the shell and restart it ag
 
 
 
-Ref: https://ardupilot.org/dev/docs/using-sitl-for-ardupilot-testing.html
+Ref: https://ardupilot.org/dev/docs/using-sitl-for-ardupilot-testing.html .
+
+
+
+
+
 
 
 
