@@ -29,7 +29,7 @@ For SITL deployment ([An Intro Video](https://youtu.be/KfAOsSYtokA)), you may wa
     and
     For example,
     ```
-    bash start_sitl_fleet.sh --loc=ardupilot --ip=<CloudStationIP> --udp=14550 --custom-location=<Lat_of_UC_Irvine>,<Lng_of_UC_Irvine>,500,1
+    bash start_sitl_fleet.sh --loc=ardupilot --ip=<CloudStationIP> --udp=14550 --custom-location=<Lat_of_UC_Irvine>,<Lng_of_UC_Irvine>,6,353 
     ```
     .
     start with 1 first.
