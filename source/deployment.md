@@ -18,7 +18,7 @@ Another [video](https://youtu.be/uXWyd3k0Se8) for CloudStation Deployment on Ama
     * Step 6: Configure Security Group (AWS EC2 Console)
       * SSH (TCP)   Port:22     Source:My IP
       * HTTP(TCP)   Port:80     Source:Anywhere
-      * HTTP(TCP)   Port:443     Source:Anywhere 
+      * HTTPS(TCP)   Port:443     Source:Anywhere 
       * Custom UDP Rule  Port:14550  Source:Anywhere
         * MAVLink (vehicle messages) is routed to 14550 via UDP in the current configuration. Any available port can be used instead of 14550. If you want to connect multiple vehicles, enter a range of ports, such as 14550-14560.
     * Create or use existing key pairs. This is used for SSH.
