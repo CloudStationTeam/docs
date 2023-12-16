@@ -11,7 +11,7 @@ You will also need a free [MapBox](https://account.mapbox.com/) account. Make su
 
 #### Deployment Steps
 For a step by step video guide, see [here](https://www.youtube.com/watch?v=kNkkfPRBoJo). \
-Another [video](https://youtu.be/uXWyd3k0Se8) for CloudStation Deployment on Amazon Web Services Linux 22.4.
+Another [video](https://youtu.be/MzEE0EAfrfY) for CloudStation Deployment on Amazon Web Services Linux 22.4. 
 
 1. Launch an EC2 instance on AWS with Ubuntu 22.4 LTS
     * t2.micro (free-tier eligible) is good enough to test the deployment.
