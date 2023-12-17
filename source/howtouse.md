@@ -1,4 +1,4 @@
-# How to Use
+# How to Use [web](./webapp.md) 
 For a video guide on how to use CloudStation, go [here](https://youtu.be/PB6MMZeGsj8).
 
 ![CloudStation before logging in](images/cloudstation-first-access.png "CloudStation site screenshot when first accessed") 
