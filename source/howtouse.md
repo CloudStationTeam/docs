@@ -1,6 +1,5 @@
 # How to Use 
 For a video guide on how to use CloudStation, go [here](https://youtu.be/PB6MMZeGsj8). 
-## Another [Doc](./waypoints.md) and video guide about waypoints.
 
 ![CloudStation before logging in](images/cloudstation-first-access.png "CloudStation site screenshot when first accessed") 
 1. In your web browser, go to your AWS instance's DNS address. You will see a map that takes up the whole screen. In the menu at the top, click "Log in/Sign up" and select "Sign up."
@@ -17,3 +16,10 @@ For a video guide on how to use CloudStation, go [here](https://youtu.be/PB6MMZe
 5. Adjusting displayed telemetry data:
     * On any connected drone, click the "Edit Data" button under the default telemetry table. This will bring up a form with several columns of checkboxes.
     * Select the data fields you would like to monitor and click "Submit." Data for the fields you selected will now be displayed in the "Other Data" section of the telemetry monitor. This change will apply for all drones.
+
+
+
+## Waypoints. 
+Another [Doc](./waypoints.md) and video guide about waypoints.
+
+
