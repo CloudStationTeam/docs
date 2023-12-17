@@ -1,5 +1,5 @@
 # How to Use 
-For a video guide on how to use CloudStation, go [here](https://youtu.be/PB6MMZeGsj8). \
+For a video guide on how to use CloudStation, go [here](https://youtu.be/PB6MMZeGsj8). 
 ## Another [Doc](./waypoints.md) and video guide about waypoints.
 
 ![CloudStation before logging in](images/cloudstation-first-access.png "CloudStation site screenshot when first accessed") 
