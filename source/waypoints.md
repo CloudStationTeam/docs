@@ -38,7 +38,7 @@ It went to Waypoint 1, and then Land.
 #### Waypoints:
 
 Confirm that it's connected to a drone. Send an example message first. For example, set mode to GUIDED. \
-Select several waypoints.
+Select several waypoints. \
 Send the waypoints. \
 Set mode to AUTO, when SITL tells you to do it. If SITL shows a message about "switch to AUTO", then you could set mode to AUTO multiple times. \
 It'll go to the waypoints.
