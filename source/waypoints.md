@@ -1,6 +1,4 @@
 
-
-
 ### About How to use Waypoints. And [Demo1](https://youtu.be/aSjZk-p0Dkg) and [Demo2](https://youtu.be/mtgL0nYEi3Y).
 
 When SITL runs slow, it maybe better to use 2 devices for SITL simulation and CloudStation Deployment.
