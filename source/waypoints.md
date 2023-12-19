@@ -25,7 +25,7 @@ Calit2, Irvine, CA, USA. (Waypoint 1) \
 A random waypoint on the map nearby. (Waypoint 2) \
 RapidTech, Campus Drive, Irvine, CA, USA. (Waypoint 3).
 
-Demo1: The SITL went fast. When the website was reloaded, it already went to the first waypoint and it was about to went to the second waypoint. It went to Waypoint 1, then Waypoint 2, and then Waypoint 3. And then Land.
+Demo1: It went to Waypoint 1, then Waypoint 2, and then Waypoint 3. And then Land.
 
 Demo2: It went to Waypoint 1, then Waypoint 2, and then Waypoint 3. And then Land.
 
@@ -63,11 +63,13 @@ That's all for waypoints.
 "Add": add a waypoint to a drone. \
 "Update": update waypoints to a drone. \
 "Send": send waypoints to a drone. \
-"Clear All": clear all waypoint to a drone. \
+"Remove": remove a waypoint for a drone. \
+"Clear All": clear all waypoints for a drone. \
 "Show All Waypoint Lists": show all waypoints for all drones. \
 "Clear All Waypoint Lists": clear All waypoints for all drone. \
 There could be different drones. 
 
-Notes: \
+Notes. \
 "Note in SITL the drone will only arm in guided mode. However, for real drones, they will arm in other modes also."
+
 
