@@ -65,7 +65,7 @@ That's all for waypoints.
 "Send": send waypoints to a drone. \
 "Clear All": clear all waypoint to a drone. \
 "Show All Waypoint Lists": show all waypoints for all drones. \
-"Clear All Waypoint Lists": clear All waypoints for all drone. \
+"Clear All Waypoint Lists": clear All waypoints for all drone. 
 
 
 Notes: \
