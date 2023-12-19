@@ -66,7 +66,7 @@ That's all for waypoints.
 "Clear All": clear all waypoint to a drone. \
 "Show All Waypoint Lists": show all waypoints for all drones. \
 "Clear All Waypoint Lists": clear All waypoints for all drone. 
-
+There could be different drones. 
 
 Notes: \
 "Note in SITL the drone will only arm in guided mode. However, for real drones, they will arm in other modes also."
