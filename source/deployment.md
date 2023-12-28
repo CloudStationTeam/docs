@@ -33,7 +33,7 @@ Another [video](https://youtu.be/MzEE0EAfrfY) for CloudStation Deployment on Ama
     run 
     ```
     cd ~
-    git clone https://github.com/CloudStationTeam/cloud_station_deployment.git
+    git clone https://github.com/CloudStationTeam/cloud_station_deployment.git --branch dev --single-branch
     bash ~/cloud_station_deployment/setup_server.sh
     ```
     This deploys an instance of the CloudStation web server based on the latest commit. Note that the latest commit may be developmental. For a more stable version, you can run setup_server.sh with a flag to indicate a certain release tag, e.g. `bash ~/cloud_station_deployment/setup_server.sh --tag=v3.0`.
