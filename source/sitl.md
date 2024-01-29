@@ -1,4 +1,7 @@
-# SITL Deployment
+# SITL Deployment (Linus)
+See https://github.com/PeterJBurke/CreateSITLenv.
+
+# SITL Deployment (Windows)
 For SITL deployment ([An Intro Video](https://youtu.be/KfAOsSYtokA)), you may want to start another Windows ec2 ([An Intro Video](https://youtu.be/L0LnWJfgDeM)) and connect to it by rdp, then
 1. download https://github.com/ArduPilot/ardupilot/blob/master/Tools/environment_install/install-prereqs-windows.ps1, then right click to run it by ps (then type A) (to download cygwin and mavproxy).
    
