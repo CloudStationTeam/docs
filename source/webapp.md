@@ -41,3 +41,8 @@
 [x] Add customizable telemetry options
 
 [] Link customizable telemetry options to specific users
+
+[x] Waypoints (Cloudstation V 3.0 (Fall 2023)). This was a student project that crashed the drone. So it is on the back burner for now
+
+[x] Cloudstation 4.0 (Released January 2024). Add support for all flight modes, arm/disarm clearly on UI, support land/takeoff, RTL.
+
